@@ -4,6 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Carme
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.8.1/css/all.css", :integrity => "sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf", :rel => "stylesheet"}/
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     :javascript
@@ -20,24 +21,6 @@
         s.parentNode.insertBefore(wf, s);
       })();
   %body
-    %header.header
-      .header__bar.row
-        %h1.grid-6
-          %a{:href => "/"} Carme
-        - if user_signed_in?
-          .user_nav.grid-6
-            %span
-              = current_user.nickname
-              %ul.user__info
-                %li
-                  %a{:href => "/users/#{current_user.id}"} マイページ
-                  = link_to "ログアウト", destroy_user_session_path, method: :delete
-            %a.post{:href => "/posts/new"} 投稿する
-        - else
-          .grid-6
-            = link_to "ログイン", new_user_session_path, class: 'post'
-            = link_to "新規登録", new_user_registration_path, class: 'post'
     = yield
-    %footer
-      %p
-        Copyright Carme 2019.
+    %p
+      Copyright Carme 2019.

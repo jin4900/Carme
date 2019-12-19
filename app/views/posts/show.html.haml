@@ -1,0 +1,17 @@
+= image_tag @post.image.url
+= @post.user.nickname
+= simple_format(@post.text)
+%div{id: "likes-buttons_#{@post.id}"}
+  = render partial: 'likes/like', locals: {likes: @like, post: @post}
+- if @comments.present?
+  - @comments.each do |comment|
+    = comment.user.nickname
+    = comment.content
+    = link_to "コメント消去", post_comment_path(comment.id, comment.post.id), method: :delete, data: {confirm: "本当に削除しますか？"}
+- if current_user
+  = form_for [@post, @comment] do |f|
+    = f.text_field :content
+    = f.submit "コメントする"
+- if @post.user_id == current_user.id
+  = link_to "編集", "/posts/#{@post.id}/edit"
+  = link_to "消去", "/posts/#{@post.id}", method: :delete, data: {confirm: "本当に削除しますか？"}

@@ -7,15 +7,42 @@ class PostsController < ApplicationController
   end
 
   def new
+    @posts = Post.new
   end
 
   def create
-    Post.create(name: post_params[:name], image: post_params[:image], text: post_params[:text], user_id: current_user.id)
+    @posts = Post.new(post_params)
+    @posts.save
+  end
+
+  def show
+    @post = Post.all
+    @post = Post.find_by(id: params[:id])
+    @comment = Comment.new
+    # @comment = @post.comments.build
+    @comments = @post.comments
+    @like = Like.new
+  end
+
+  def edit
+    @posts = Post.find_by(id: params[:id])
+  end
+
+  def update
+    @posts = Post.find_by(id: params[:id])
+    @posts.update(post_params)
+    redirect_to root_path
+  end
+
+  def destroy
+    @posts = Post.find_by(id: params[:id])
+    @posts.destroy
+    redirect_to("/")
   end
 
   private
   def post_params
-    params.permit(:name, :image, :text)
+    params.require(:post).permit(:name, :image, :text).merge(user_id: current_user.id)
   end
 
   def move_to_index

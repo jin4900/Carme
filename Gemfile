@@ -59,3 +59,13 @@ gem 'sprockets', '3.7.2'
 gem 'devise'
 
 gem 'haml-rails'
+
+gem 'carrierwave'
+
+gem "font-awesome-sass", '~> 5.4.1'
+
+gem 'bootstrap-sass'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end

@@ -1,5 +1,13 @@
-.contents.row
-  - @posts.each do |post|
-    .content_post{:style => "background-image: url(#{post.image});"}
-      = simple_format(post.text)
-      %span.name= post.name
+.wrapper
+  = render 'shared/header'
+.content
+  .content__contents
+    - @posts.each do |post|
+      .content__contents__post
+        = image_tag post.image.url, class: 'content__contents__post__image'
+        .content__contents__post__name
+          %span= post.user.nickname
+        .content__contents__post__text
+          = simple_format(post.text)
+
+        = link_to "詳細", "/posts/#{post.id}"

@@ -1,10 +1,39 @@
 .header{
-  padding: 10px;
-  border-bottom: 1px solid #D8D8D8;
-  background-color: #fff;
+  align-items: center;
+  background-color: #333;
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
+  width: 100%;
+  z-index: 1;
+  .top{
+    margin: auto;
+    align-items: center;
+    height: 25px;
+    max-width: 1010px;
+    padding: 26px 20px;
+    width: 100%;
+    .grid-6{
+      font-size: 23px;
+      line-height: 30px;
+      float: left;
+      .toplink{
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    .user_nav{
+      float: right;
+      text-align: right;
+      .user_name{
+        float: left;
+      }
+      .user__info{
+        float: right;
+        .page{
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

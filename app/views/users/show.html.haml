@@ -1,8 +1,11 @@
-.contents.row
-  %p
-    = @nickname
-    さんの投稿一覧
+.wrapper
+  = render 'shared/header'
+.contents
+  = @nickname
+  さんの投稿一覧
   - @posts.each do |post|
-    .content_post{:style => "background-image: url(#{post.image});"}
-      = simple_format(post.text)
-      %span.name= post.name
+    .content_post
+    = image_tag post.image.url
+    = post.text
+    = post.user.nickname
+    = link_to "詳細", "/posts/#{post.id}"
