@@ -7,7 +7,7 @@
   - @comments.each do |comment|
     = comment.user.nickname
     = comment.content
-    = link_to "コメント消去", post_comment_path(comment.id, comment.post.id), method: :delete, data: {confirm: "本当に削除しますか？"}
+    = link_to "コメント消去", post_comment_path(post_id: @post, id: comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}
 - if current_user
   = form_for [@post, @comment] do |f|
     = f.text_field :content
