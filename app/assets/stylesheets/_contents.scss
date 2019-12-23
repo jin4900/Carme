@@ -12,21 +12,32 @@
       border: 1px solid #333;
       height: 550px;
       margin-top: 30px;
-      &__image{
-        width: 100%;
-        height: 380px;
-        object-fit: cover;
-        background-position: center center;
-      }
-      &__name{
-        color: #fff;
-        width: 100%;
+      &__header{
         height: 30px;
+        padding: 16px;
+        &__name{
+          float: left;
+          text-align: left;
+          color: #fff;
+        }
+        &__show{
+          text-align: right;
+          &__id{
+            color: #fff;
+            text-decoration: none;
+          }
+        }
       }
       &__text{
         color: #fff;
         width: 100%;
         height: 90px;
+      }
+      &__image{
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        background-position: center center;
       }
     }
   }

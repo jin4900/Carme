@@ -4,6 +4,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @post = Post.find_by(id: params[:id])
+    @like = Like.new
   end
 
   def new
