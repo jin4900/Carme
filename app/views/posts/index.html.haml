@@ -10,6 +10,11 @@
           .content__contents__post__header__show
             = link_to "詳細", "/posts/#{post.id}", class: 'content__contents__post__header__show__id'
         = image_tag post.image.url, class: 'content__contents__post__image'
+        いいね！
+        = post.likes_count
+        件
         .content__contents__post__text
           = simple_format(post.text)
+  = paginate(@posts)
+
 
