@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @comment = Comment.new
     # @comment = @post.comments.build
-    @comments = @post.comments
+    @comments = @post.comments.order("created_at DESC")
     @like = Like.new
   end
 

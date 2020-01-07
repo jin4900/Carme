@@ -1,17 +1,39 @@
-= image_tag @post.image.url
-= @post.user.nickname
-= simple_format(@post.text)
-%div{id: "likes-buttons_#{@post.id}"}
-  = render partial: 'likes/like', locals: {likes: @like, post: @post}
-- if @comments.present?
-  - @comments.each do |comment|
-    = comment.user.nickname
-    = comment.content
-    = link_to "コメント消去", post_comment_path(post_id: @post, id: comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}
-- if current_user
-  = form_for [@post, @comment] do |f|
-    = f.text_field :content
-    = f.submit "コメントする"
-- if @post.user_id == current_user.id
-  = link_to "編集", "/posts/#{@post.id}/edit"
-  = link_to "消去", "/posts/#{@post.id}", method: :delete, data: {confirm: "本当に削除しますか？"}
+.wrapper
+  = render 'shared/header'
+.content
+  .show
+    .show__cont
+      .show__cont__post
+        = image_tag @post.image.url, class: 'show__cont__post__image'
+      .show__cont__main
+        .show__cont__main__header
+          .show__cont__main__header__name
+            = @post.user.nickname
+          .show__cont__main__header__text
+            = simple_format(@post.text)
+          .show__cont__main__header__show
+            - if @post.user_id == current_user.id
+              = link_to "編集", "/posts/#{@post.id}/edit", class: 'show__cont__main__header__show__id'
+              = link_to "消去", "/posts/#{@post.id}", method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'show__cont__main__header__show__id'
+        .show__cont__main__text
+          - if @comments.present?
+            - @comments.each do |comment|
+              .show__cont__main__text__comment
+                .show__cont__main__text__comment__nickname
+                  = comment.user.nickname
+                .show__cont__main__text__comment__content
+                  = comment.content
+                .show__cont__main__text__comment__delete
+                  = link_to "コメント消去", post_comment_path(post_id: @post, id: comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'show__cont__main__text__comment__delete__button'
+        .show__cont__main__like
+          %div{id: "likes-buttons_#{@post.id}"}
+            = render partial: 'likes/like', locals: {likes: @like, post: @post}
+          .show__cont__main__like__comment
+            %i.fas.fa-comment
+            = @comments.count
+        .show__cont__main__form
+          - if current_user
+            = form_for [@post, @comment] do |f|
+              = f.text_field :content, class: 'show__cont__main__form__content'
+              = f.submit "コメント", class: 'show__cont__main__form__submit'
+      
