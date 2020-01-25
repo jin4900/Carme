@@ -1,11 +1,14 @@
 .wrapper
   = render 'shared/header'
-.contents
-  = @nickname
-  さんの投稿一覧
-  - @posts.each do |post|
-    .content_post
-    = image_tag post.image.url
-    = post.text
-    = post.user.nickname
-    = link_to "詳細", "/posts/#{post.id}"
+.content
+  .user
+    = @nickname
+    さんの投稿一覧
+    %ul.photo-list
+      - @posts.each do |post|
+        %li
+          = link_to "/posts/#{post.id}" do
+            = image_tag post.image.url, class: 'photo-list-img'
+            -# = post.text
+            -# = post.user.nickname
+            -# = link_to "詳細", "/posts/#{post.id}"

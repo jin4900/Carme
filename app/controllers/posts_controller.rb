@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
 
   before_action :move_to_index, except: :index
+  before_action :authenticate_user!, only: [:show, :create]
 
   def index
     @posts = Post.order("created_at DESC").page(params[:page]).per(5)
     @post = Post.find_by(id: params[:id])
     @like = Like.new
+    @comment = Comment.new
+    # @comments = @post.comments
   end
 
   def new
@@ -15,6 +18,7 @@ class PostsController < ApplicationController
   def create
     @posts = Post.new(post_params)
     @posts.save
+    redirect_to root_path
   end
 
   def show

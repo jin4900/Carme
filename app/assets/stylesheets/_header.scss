@@ -20,6 +20,8 @@
       .toplink{
         color: #fff;
         text-decoration: none;
+        font-size: 35px;
+        font-family: 'Caveat', cursive;
       }
     }
     .user_nav{
@@ -28,14 +30,22 @@
       .user_name{
         float: left;
         color: #fff;
+        font-size: 20px;
+        font-family: 'Caveat', cursive;
       }
       .user__info{
         float: right;
         .page{
           color: #fff;
           text-decoration: none;
+          font-size: 25px;
+          font-family: 'Caveat', cursive;
+          padding-left: 20px;
         }
       }
     }
   }
 }
+body {
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'  
+  }

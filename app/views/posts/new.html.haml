@@ -1,19 +1,20 @@
 .header
   = render "shared/header"
-  .content
-    = form_for @posts do |f|
-      %h3 投稿する
-      = f.label "画像をアップロード"
-      = f.file_field :image
-      = f.label 'text'
-      = f.text_area :text
-      -# = f.hidden_field :user_id, value: current_user.id
-      = f.submit "send"
+.content
+  .new
+    .new__post
+      = form_for @posts, html: { class: "new__post__form" } do |f|
+        .new__post__form__picture
+          .new__post__form__picture__image
+            #img_field{:onclick => "$('#post_img').click()"}
+              - if @posts.image.present?
+                = image_tag @posts.image
+              - else
+                %i.fas.fa-image
+                %i.fas.fa-file-upload.add
+            = f.file_field :image, class: "image", style: "display:none;", id: :post_img
 
-    -# = form_tag('/posts', method: :post) do
-  -#   %h3
-  -#     投稿する
-  -#   %input{:name => "name", :placeholder => "Nickname", :type => "text"}/
-  -#   %input{:name => "image", :placeholder => "Image", :type => "string"}/
-  -#   %textarea{:cols => "30", :name => "text", :placeholder => "text", :rows => "10"}
-  -#   %input{:type => "submit", :value => "SENT"}/
+        .new__post__form__text
+          = f.text_area :text, class: 'new__post__form__text__content'
+          -# = f.hidden_field :user_id, value: current_user.id
+          = f.submit "投稿", class: 'new__post__form__text__send'

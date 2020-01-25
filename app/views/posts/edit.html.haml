@@ -1,8 +1,20 @@
-= form_for @posts, :url => {:action => :update} do |f|
-  %h3 投稿する
-  = f.label "画像をアップロード"
-  = f.file_field :image
-  = f.label 'text'
-  = f.text_area :text
-  -# = f.hidden_field :user_id, value: current_user.id
-  = f.submit "send"
+.header
+  = render "shared/header"
+.content
+  .new
+    .new__post
+      = form_for @posts, :url => {:action => :update}, html: { class: "new__post__form" } do |f|
+        .new__post__form__picture
+          .new__post__form__picture__image
+            #img_field{:onclick => "$('#post_img').click()"}
+              - if @posts.image.present?
+                = image_tag @posts.image, id: :img_prev
+              - else
+                %i.fas.fa-image
+                %i.fas.fa-file-upload.add
+            = f.file_field :image, class: "image", style: "display:none;", id: :post_img
+
+        .new__post__form__text
+          = f.text_area :text, class: 'new__post__form__text__content'
+          -# = f.hidden_field :user_id, value: current_user.id
+          = f.submit "投稿", class: 'new__post__form__text__send'

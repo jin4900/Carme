@@ -9,10 +9,12 @@
             = current_user.nickname
         %ul.user__info
           %li
-            = link_to "マイページ", "/users/#{current_user.id}", class: 'page'
-            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'page'
-            = link_to "投稿する", "/posts/new", class: 'page' 
+            = link_to "Mypage", "/users/#{current_user.id}", class: 'page'
+            = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'page'
+            = link_to "Post", "/posts/new", class: 'page' 
     - else
-      .grid-6
-        = link_to "ログイン", new_user_session_path, class: 'post'
-        = link_to "新規登録", new_user_registration_path, class: 'post'
+      .user_nav
+        %ul.user__info
+          %li
+            = link_to "Sign In", new_user_session_path, class: 'page'
+            = link_to "Sign Up", new_user_registration_path, class: 'page'

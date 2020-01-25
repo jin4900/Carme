@@ -1,0 +1,20 @@
+.user{
+  padding-top: 30px;
+  margin: auto;
+  max-width: 800px;
+}
+.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  li {
+    flex-basis: 33.3%;
+
+    .photo-list-img {
+      height: 100%;
+      width: 100%;
+      border: 3px solid #444;
+    }
+  }
+}
