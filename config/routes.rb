@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
+  get 'users' => 'users#like'
   get 'users/:id' => 'users#show'
   # get 'posts' => 'posts#index'
   # get 'posts/new' => 'posts#new'
