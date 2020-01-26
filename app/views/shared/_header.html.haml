@@ -9,6 +9,7 @@
             = current_user.nickname
         %ul.user__info
           %li
+            = link_to "Like", users_path, class: 'page'
             = link_to "Mypage", "/users/#{current_user.id}", class: 'page'
             = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'page'
             = link_to "Post", "/posts/new", class: 'page' 

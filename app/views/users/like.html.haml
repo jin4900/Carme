@@ -4,9 +4,9 @@
   .user
     .nickname
       = @nickname
-      さんの投稿一覧
+      さんのお気に入り
     %ul.photo-list
-      - @posts.each do |post|
+      - @post.each do |post|
         %li
           = link_to "/posts/#{post.id}" do
             = image_tag post.image.url, class: 'photo-list-img'
