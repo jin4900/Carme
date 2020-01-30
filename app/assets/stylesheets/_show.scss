@@ -35,13 +35,6 @@
           color: #fff;
           font-weight: 600;
         }
-        &__text{
-          display: table-cell;
-          text-align: center;
-          color: #fff;
-          font-size: 14px;
-          overflow: hidden;
-        }
         &__show{
           display: table-cell;
           text-align: right;
@@ -58,6 +51,22 @@
         height: 240px;
         background-color: #333;
         overflow: auto;
+        &__user{
+          height: 20px;
+          padding: 12px 16px;
+          width: 450px;
+          display: table;
+          border-bottom: 1px solid #222;
+          &__nickname{
+            float: left;
+            color: #fff;
+            font-weight: 600;
+          }
+          &__post{
+            color: #fff;
+            font-size: 14px;
+          }
+        }
         &__comment{
           height: 20px;
           padding: 12px 16px;

@@ -9,13 +9,16 @@
         .show__cont__main__header
           .show__cont__main__header__name
             = @post.user.nickname
-          .show__cont__main__header__text
-            = @post.text
           .show__cont__main__header__show
             - if @post.user_id == current_user.id
               = link_to "編集", "/posts/#{@post.id}/edit", class: 'show__cont__main__header__show__id'
               = link_to "消去", "/posts/#{@post.id}", method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'show__cont__main__header__show__id'
         .show__cont__main__text
+          .show__cont__main__text__user
+            .show__cont__main__text__user__nickname
+              = @post.user.nickname
+            .show__cont__main__text__user__post
+              = @post.text
           - if @comments.present?
             - @comments.each do |comment|
               .show__cont__main__text__comment
@@ -24,7 +27,7 @@
                 .show__cont__main__text__comment__content
                   = comment.content
                 .show__cont__main__text__comment__delete
-                  = link_to "コメント消去", post_comment_path(post_id: @post, id: comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'show__cont__main__text__comment__delete__button'
+                  = link_to "×", post_comment_path(comment.post.id, comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'show__cont__main__text__comment__delete__button'
         .show__cont__main__like
           %div{id: "likes-buttons_#{@post.id}"}
             = render partial: 'likes/like', locals: {likes: @like, post: @post}
