@@ -27,7 +27,8 @@
                 .show__cont__main__text__comment__content
                   = comment.content
                 .show__cont__main__text__comment__delete
-                  = link_to "×", post_comment_path(comment.post.id, comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'show__cont__main__text__comment__delete__button'
+                  - if comment.user_id == current_user.id
+                    = link_to "×", post_comment_path(comment.post.id, comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'show__cont__main__text__comment__delete__button'
         .show__cont__main__like
           %div{id: "likes-buttons_#{@post.id}"}
             = render partial: 'likes/like', locals: {likes: @like, post: @post}
