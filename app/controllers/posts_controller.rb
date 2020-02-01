@@ -17,12 +17,14 @@ class PostsController < ApplicationController
 
   def create
     @posts = Post.new(post_params)
-    @posts.save
-    redirect_to root_path
+    if @posts.save
+      redirect_to root_path
+    else
+      render action: :new
+    end
   end
 
   def show
-    @post = Post.all
     @post = Post.find_by(id: params[:id])
     @comment = Comment.new
     # @comment = @post.comments.build

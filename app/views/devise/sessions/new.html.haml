@@ -3,11 +3,11 @@
 .content
   .content__sign
     .form
-      %h1 Log in
+      %h1 Sign in
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         %br/
         = f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "Email"
         %br/
         = f.password_field :password, autocomplete: "current-password", :placeholder => "Password"
         - if devise_mapping.rememberable?
-          = f.submit "Log in", class: 'button'
+          = f.submit "Sign in", class: 'button'

@@ -1,7 +1,10 @@
 .user{
   padding-top: 30px;
+  padding-bottom: 30px;
   margin: auto;
   max-width: 800px;
+  min-height:648px; 
+  height:auto !important; 
   height: 648px;
   .nickname{
     font-size: 30px;

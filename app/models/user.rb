@@ -11,4 +11,7 @@ class User < ApplicationRecord
   def posts
     return Post.where(user_id: self.id)
   end
+  validates :nickname, presence: true, format: {with: /\A[a-zA-Z0-9]+\z/}
+  validates :email, presence: true, format: {with: /\A\S+@\S+\.\S+\z/}
+  validates :password, presence: true, format: {with: /\A[a-zA-Z0-9]+\z/}
 end

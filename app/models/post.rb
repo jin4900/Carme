@@ -6,4 +6,6 @@ class Post < ApplicationRecord
   def like_user(id)
     likes.find_by(user_id: id)
   end
+  validates :image, presence: true
+  validates :text, presence: true
 end
